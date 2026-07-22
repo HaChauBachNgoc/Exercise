@@ -7,6 +7,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitnessapp.R;
+
 public class BodyActivity extends AppCompatActivity {
 
     EditText edtHeight, edtWeight, edtAge;

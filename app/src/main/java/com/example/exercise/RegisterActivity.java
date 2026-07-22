@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.exercise.database.DBHelper;
+import com.example.fitnessapp.R;
 
 public class RegisterActivity extends AppCompatActivity {
 

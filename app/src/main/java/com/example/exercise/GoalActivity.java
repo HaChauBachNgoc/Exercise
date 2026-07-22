@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitnessapp.R;
+
 public class GoalActivity extends AppCompatActivity {
 
     RadioGroup rgGoal;

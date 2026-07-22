@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitnessapp.R;
+
 public class ResultActivity extends AppCompatActivity {
 
     TextView txtHello, txtBMI, txtCategory, txtBMR, txtGoal;
