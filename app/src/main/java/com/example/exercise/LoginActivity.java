@@ -57,8 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         "Đăng nhập thành công!",
                         Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(LoginActivity.this,
-                        MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 
                 startActivity(intent);
 
