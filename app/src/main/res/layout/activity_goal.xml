@@ -1,78 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA">
+    android:background="#1E1933"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="20dp">
 
-        <TextView
+        <!-- HEADER: BÓNG THOẠI TIÊU ĐỀ NẰM NGOÀI -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mục tiêu của bạn"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="#2E7D32"/>
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hãy chọn mục tiêu phù hợp với bạn."
-            android:textSize="16sp"
-            android:textColor="#666666"
-            android:layout_marginTop="8dp"/>
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@mipmap/ic_launcher" />
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="12dp"
+                    android:text="Mục tiêu cân nặng của bạn"
+                    android:textColor="#4CAF50"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- RadioGroup chứa các Card Mục tiêu -->
         <RadioGroup
             android:id="@+id/rgGoal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="36dp"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/rbLose"
-                android:layout_width="wrap_content"
+            <!-- CARD 1: GIẢM CÂN -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🔥 Giảm cân"
-                android:textSize="18sp"/>
+                app:cardBackgroundColor="#2E2848"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
-            <RadioButton
-                android:id="@+id/rbGain"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="💪 Tăng cân"
-                android:textSize="18sp"
-                android:layout_marginTop="15dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
 
-            <RadioButton
-                android:id="@+id/rbMaintain"
-                android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/rbLose"
+                        android:orientation="vertical">
+
+                        <!-- Dán thẳng emoji 🔥 -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔥 Giảm cân"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Tập trung vào giảm mỡ"
+                            android:textColor="#B2ACC7"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <RadioButton
+                        android:id="@+id/rbLose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:buttonTint="#52C41A" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CARD 2: TĂNG CÂN -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="⚖️ Duy trì cân nặng"
-                android:textSize="18sp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#2E2848"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/rbGain"
+                        android:orientation="vertical">
+
+                        <!-- Dán thẳng emoji 💪 -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💪 Tăng cân"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Xây dựng cơ bắp, khỏe mạnh từ bên trong"
+                            android:textColor="#B2ACC7"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <RadioButton
+                        android:id="@+id/rbGain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:buttonTint="#52C41A" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CARD 3: DUY TRÌ CÂN NẶNG -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="#2E2848"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/rbMaintain"
+                        android:orientation="vertical">
+
+                        <!-- Dán thẳng emoji ⚖️ -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⚖️ Duy trì cân nặng"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Vừa đốt mỡ, vừa tăng cơ để có body săn chắc."
+                            android:textColor="#B2ACC7"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <RadioButton
+                        android:id="@+id/rbMaintain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:buttonTint="#52C41A" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
         </RadioGroup>
 
+        <!-- Cụm nút bấm điều hướng -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="36dp"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btnBack"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
-                android:text="QUAY LẠI"/>
+                android:text="QUAY LẠI"
+                android:textColor="#B2ACC7"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="#3B3358"
+                app:cornerRadius="16dp" />
 
             <Space
-                android:layout_width="10dp"
-                android:layout_height="match_parent"/>
+                android:layout_width="12dp"
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/btnNext"
@@ -80,11 +230,13 @@
                 android:layout_height="55dp"
                 android:layout_weight="1"
                 android:text="TIẾP"
-                android:textColor="@android:color/white"
-                android:background="@drawable/bg_button"/>
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:backgroundTint="#4CAF50"
+                app:cornerRadius="16dp" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 </ScrollView>
