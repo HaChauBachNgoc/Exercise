@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1933"
+    android:background="#121026"
     android:fillViewport="true">
 
     <LinearLayout
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="TẠO TÀI KHOẢN"
-            android:textColor="#4CAF50"
+            android:textColor="#fff"
             android:textSize="26sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            app:cardBackgroundColor="#2E2848"
+            app:cardBackgroundColor="#1D1A38"
             app:cardCornerRadius="24dp"
             app:cardElevation="0dp">
 
@@ -124,7 +124,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:backgroundTint="#4CAF50"
+                    app:backgroundTint="#7C3AED"
                     app:cornerRadius="16dp" />
 
                 <!-- Nút Quay lại Đăng nhập -->
@@ -147,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ĐĂNG NHẬP"
-                        android:textColor="#4CAF50"
+                        android:textColor="#7C3AED"
                         android:textSize="14sp"
                         android:textStyle="bold" />
                 </LinearLayout>

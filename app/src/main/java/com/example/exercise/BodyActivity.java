@@ -11,7 +11,7 @@ import com.example.fitnessapp.R;
 
 public class BodyActivity extends AppCompatActivity {
 
-    EditText edtHeight, edtWeight, edtAge;
+    EditText edtHeight, edtWeight;
     Button btnBack, btnNext;
 
     String name, gender, goal;
@@ -24,10 +24,10 @@ public class BodyActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         gender = getIntent().getStringExtra("gender");
         goal = getIntent().getStringExtra("goal");
+        int age = getIntent().getIntExtra("age", 0);
 
         edtHeight = findViewById(R.id.edtHeight);
         edtWeight = findViewById(R.id.edtWeight);
-        edtAge = findViewById(R.id.edtAge);
 
         btnBack = findViewById(R.id.btnBack);
         btnNext = findViewById(R.id.btnNext);
@@ -36,38 +36,38 @@ public class BodyActivity extends AppCompatActivity {
 
         btnNext.setOnClickListener(v -> {
 
-            String height = edtHeight.getText().toString().trim();
-            String weight = edtWeight.getText().toString().trim();
-            String age = edtAge.getText().toString().trim();
+            String heightStr = edtHeight.getText().toString().trim();
+            String weightStr = edtWeight.getText().toString().trim();
 
-            if (height.isEmpty()) {
+            if (heightStr.isEmpty()) {
                 edtHeight.setError("Nhập chiều cao");
                 return;
             }
 
-            if (weight.isEmpty()) {
+            if (weightStr.isEmpty()) {
                 edtWeight.setError("Nhập cân nặng");
                 return;
             }
 
-            if (age.isEmpty()) {
-                edtAge.setError("Nhập tuổi");
-                return;
+            try {
+                double height = Double.parseDouble(heightStr);
+                double weight = Double.parseDouble(weightStr);
+
+                Intent intent = new Intent(BodyActivity.this, ResultActivity.class);
+
+                intent.putExtra("name", name);
+                intent.putExtra("gender", gender);
+                intent.putExtra("goal", goal);
+                intent.putExtra("height", height);
+                intent.putExtra("weight", weight);
+                intent.putExtra("age", age);
+
+                startActivity(intent);
+
+            } catch (NumberFormatException e) {
+                edtHeight.setError("Chỉ nhập số");
+                edtWeight.setError("Chỉ nhập số");
             }
-
-            Intent intent = new Intent(
-                    BodyActivity.this, ResultActivity.class);
-
-            intent.putExtra("name", name);
-            intent.putExtra("gender", gender);
-            intent.putExtra("goal", goal);
-
-            intent.putExtra("height", Double.parseDouble(height));
-            intent.putExtra("weight", Double.parseDouble(weight));
-            intent.putExtra("age", Integer.parseInt(age));
-
-            startActivity(intent);
-
         });
 
     }

@@ -26,6 +26,7 @@ public class GoalActivity extends AppCompatActivity {
 
         name = getIntent().getStringExtra("name");
         gender = getIntent().getStringExtra("gender");
+        int age = getIntent().getIntExtra("age", 0);
 
         rgGoal = findViewById(R.id.rgGoal);
         rbLose = findViewById(R.id.rbLose);
@@ -39,32 +40,26 @@ public class GoalActivity extends AppCompatActivity {
 
         btnNext.setOnClickListener(v -> {
 
-            if (rgGoal.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this,
-                        "Vui lòng chọn mục tiêu",
-                        Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            String goal;
+            String goal = "";
 
             if (rbLose.isChecked()) {
                 goal = "Giảm cân";
             } else if (rbGain.isChecked()) {
                 goal = "Tăng cân";
-            } else {
+            } else if (rbMaintain.isChecked()) {
                 goal = "Duy trì cân nặng";
             }
 
-            Intent intent = new Intent(
-                    GoalActivity.this, BodyActivity.class);
+
+
+            Intent intent = new Intent(GoalActivity.this, BodyActivity.class);
 
             intent.putExtra("name", name);
             intent.putExtra("gender", gender);
             intent.putExtra("goal", goal);
+            intent.putExtra("age", age);
 
             startActivity(intent);
-
         });
 
     }

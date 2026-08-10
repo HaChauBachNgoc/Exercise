@@ -11,22 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Exercise">
+
+        <!-- 1. Màn hình Khởi động / Đăng nhập -->
         <activity
             android:name="com.example.exercise.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 2. Màn hình Đăng ký & Luồng thiết lập ban đầu -->
         <activity
             android:name="com.example.exercise.RegisterActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.example.exercise.MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -45,9 +44,58 @@
             android:name="com.example.exercise.ResultActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- 3. Màn hình Trang chủ chính -->
         <activity
-            android:name="com.example.exercise.StatisticalActivity"
+            android:name="com.example.exercise.MainActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 4. Thêm món ăn & Thêm vận động -->
+        <activity
+            android:name="com.example.exercise.AddFoodActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.exercise.AddWorkoutActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 5. Màn hình Nhật Ký Tổng Quan & Chi Tiết -->
+        <activity
+            android:name="com.example.exercise.JournalActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.exercise.FoodJournalActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.exercise.WorkoutJournalActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 6. Lịch sử Cân Nặng & Nước Uống -->
+        <activity
+            android:name="com.example.exercise.WeightJournalActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.exercise.WaterJournalActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 7. Màn hình Thống kê chính -->
+        <activity
+            android:name="com.example.exercise.AnalyticsActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="adjustResize" />
 
     </application>

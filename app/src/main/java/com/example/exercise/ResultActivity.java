@@ -11,7 +11,7 @@ import com.example.fitnessapp.R;
 
 public class ResultActivity extends AppCompatActivity {
 
-    TextView txtHello, txtBMI, txtCategory, txtBMR, txtGoal;
+    TextView txtBMI, txtCategory, txtBMR, txtGoal;
     Button btnStart;
 
     @Override
@@ -19,7 +19,7 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        txtHello = findViewById(R.id.txtHello);
+
         txtBMI = findViewById(R.id.txtBMI);
         txtCategory = findViewById(R.id.txtCategory);
         txtBMR = findViewById(R.id.txtBMR);
@@ -58,7 +58,6 @@ public class ResultActivity extends AppCompatActivity {
             bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
         }
 
-        txtHello.setText("Xin chào, " + name + "!");
         txtBMI.setText(String.format("%.1f", bmi));
         txtCategory.setText(category);
         txtBMR.setText(String.format("%.0f kcal/ngày", bmr));

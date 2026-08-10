@@ -14,7 +14,7 @@ import com.example.fitnessapp.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    EditText edtName;
+    EditText edtName, edtAge;
     RadioGroup rgGender;
     RadioButton rbMale, rbFemale;
     Button btnNext;
@@ -25,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         edtName = findViewById(R.id.edtName);
+        edtAge = findViewById(R.id.edtAge);
         rgGender = findViewById(R.id.rgGender);
         rbMale = findViewById(R.id.rbMale);
         rbFemale = findViewById(R.id.rbFemale);
@@ -33,6 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
         btnNext.setOnClickListener(v -> {
 
             String name = edtName.getText().toString().trim();
+            String age = edtAge.getText().toString().trim();
 
             if(name.isEmpty()){
                 edtName.setError("Nhập họ tên");
@@ -52,10 +54,16 @@ public class ProfileActivity extends AppCompatActivity {
                 gender = "Nữ";
             }
 
+            if (age.isEmpty()) {
+                edtAge.setError("Nhập tuổi");
+                return;
+            }
+
             Intent intent = new Intent(ProfileActivity.this, GoalActivity.class);
 
             intent.putExtra("name", name);
             intent.putExtra("gender", gender);
+            intent.putExtra("age", Integer.parseInt(age));
 
             startActivity(intent);
 

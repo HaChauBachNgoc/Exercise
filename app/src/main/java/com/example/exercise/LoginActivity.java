@@ -57,10 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                         "Đăng nhập thành công!",
                         Toast.LENGTH_SHORT).show();
 
+                // Chuyển thẳng sang Trang chủ (MainActivity) và xóa sạch lịch sử stack activity cũ
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-
                 finish();
 
             } else {
@@ -77,9 +77,8 @@ public class LoginActivity extends AppCompatActivity {
         txtRegister.setOnClickListener(view -> {
 
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-
             startActivity(intent);
-            finish();
+            // Không dùng finish() ở đây để người dùng có thể bấm nút Back quay lại màn hình đăng nhập nếu muốn
 
         });
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1E1933"
+    android:background="#121026"
     android:fillViewport="true">
 
     <LinearLayout
@@ -12,7 +12,6 @@
         android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- HEADER: BÓNG THOẠI TIÊU ĐỀ NẰM NGOÀI -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,7 +38,7 @@
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="12dp"
                     android:text="Mục tiêu cân nặng của bạn"
-                    android:textColor="#4CAF50"
+                    android:textColor="#000"
                     android:textSize="17sp"
                     android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
@@ -57,7 +56,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#2E2848"
+                app:cardBackgroundColor="#1D1A38"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp">
 
@@ -99,6 +98,7 @@
                         android:layout_centerVertical="true"
                         android:buttonTint="#52C41A" />
                 </RelativeLayout>
+
             </androidx.cardview.widget.CardView>
 
             <!-- CARD 2: TĂNG CÂN -->
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="#2E2848"
+                app:cardBackgroundColor="#1D1A38"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp">
 
@@ -155,7 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                app:cardBackgroundColor="#2E2848"
+                app:cardBackgroundColor="#1D1A38"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp">
 
@@ -217,7 +217,7 @@
                 android:textColor="#B2ACC7"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:backgroundTint="#3B3358"
+                app:backgroundTint="#1D1A38"
                 app:cornerRadius="16dp" />
 
             <Space
@@ -233,7 +233,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:backgroundTint="#4CAF50"
+                app:backgroundTint="#7C3AED"
                 app:cornerRadius="16dp" />
 
         </LinearLayout>
