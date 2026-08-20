@@ -33,7 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
         txtBackLogin = findViewById(R.id.txtBackLogin);
 
         btnRegister.setOnClickListener(view -> {
-
             String name = edtName.getText().toString().trim();
             String email = edtEmail.getText().toString().trim();
             String password = edtPassword.getText().toString().trim();
@@ -43,60 +42,47 @@ public class RegisterActivity extends AppCompatActivity {
                 edtName.setError("Nhập họ tên");
                 return;
             }
-
             if (email.isEmpty()) {
                 edtEmail.setError("Nhập email");
                 return;
             }
-
             if (password.isEmpty()) {
                 edtPassword.setError("Nhập mật khẩu");
                 return;
             }
-
             if (!password.equals(confirm)) {
                 edtConfirmPassword.setError("Mật khẩu không khớp");
                 return;
             }
 
             if (dbHelper.checkEmail(email)) {
-
-                Toast.makeText(RegisterActivity.this,
-                        "Email đã tồn tại!",
-                        Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(RegisterActivity.this, "Email đã tồn tại!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             boolean result = dbHelper.insertUser(name, email, password);
 
             if (result) {
+                Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(RegisterActivity.this,
-                        "Đăng ký thành công!",
-                        Toast.LENGTH_SHORT).show();
+                AppDataManager manager = AppDataManager.getInstance();
+                manager.setProfileName(name);
+                manager.setProfileEmail(email);
 
-                startActivity(new Intent(RegisterActivity.this, ProfileActivity.class));
-
+                // Đăng ký thành công -> Chuyển sang ProfileActivity để nhập Tên, Tuổi, Giới tính (activity_profile.xml)
+                Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                intent.putExtra("name", name);
+                startActivity(intent);
                 finish();
-
             } else {
-
-                Toast.makeText(RegisterActivity.this,
-                        "Đăng ký thất bại!",
-                        Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(RegisterActivity.this, "Đăng ký thất bại!", Toast.LENGTH_SHORT).show();
             }
-
         });
 
         txtBackLogin.setOnClickListener(view -> {
-
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-
+            startActivity(intent);
             finish();
-
         });
-
     }
 }

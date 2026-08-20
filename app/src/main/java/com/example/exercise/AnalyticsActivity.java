@@ -114,19 +114,45 @@ public class AnalyticsActivity extends AppCompatActivity {
             btnCalendarAnalytics.setOnClickListener(v -> showDatePicker());
         }
 
-        // --- ĐIỀU HƯỚNG DƯỚI CÙNG ---
+        // --- ĐIỀU HƯỚNG DƯỚI CÙNG (BOTTOM NAVIGATION) ---
+
+        // 1. Tab Trang chủ
         View menuHome = findViewById(R.id.menuHome);
         if (menuHome != null) {
             menuHome.setOnClickListener(v -> {
-                startActivity(new Intent(AnalyticsActivity.this, MainActivity.class));
+                Intent intent = new Intent(AnalyticsActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
                 finish();
             });
         }
 
+        // 2. Tab Nhật ký
         View menuJournal = findViewById(R.id.menuJournal);
         if (menuJournal != null) {
             menuJournal.setOnClickListener(v -> {
-                startActivity(new Intent(AnalyticsActivity.this, JournalActivity.class));
+                Intent intent = new Intent(AnalyticsActivity.this, JournalActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
+            });
+        }
+
+        // 3. Tab Thống kê (Đang ở trang này)
+        View menuAnalytics = findViewById(R.id.menuAnalytics);
+        if (menuAnalytics != null) {
+            menuAnalytics.setOnClickListener(v -> {
+                // Đang ở Thống kê rồi
+            });
+        }
+
+        // 4. Tab Hồ sơ -> Chuyển đến ProfileActivity2 (Trang hồ sơ chính)
+        View menuProfile = findViewById(R.id.menuProfile);
+        if (menuProfile != null) {
+            menuProfile.setOnClickListener(v -> {
+                Intent intent = new Intent(AnalyticsActivity.this, ProfileActivity2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
                 finish();
             });
         }

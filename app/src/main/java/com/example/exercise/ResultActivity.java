@@ -19,7 +19,6 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-
         txtBMI = findViewById(R.id.txtBMI);
         txtCategory = findViewById(R.id.txtCategory);
         txtBMR = findViewById(R.id.txtBMR);
@@ -36,7 +35,7 @@ public class ResultActivity extends AppCompatActivity {
 
         // BMI
         double h = height / 100.0;
-        double bmi = weight / (h * h);
+        double bmi = (h > 0) ? weight / (h * h) : 0;
 
         String category;
 
@@ -52,7 +51,7 @@ public class ResultActivity extends AppCompatActivity {
         // BMR
         double bmr;
 
-        if (gender.equals("Nam")) {
+        if (gender != null && gender.equals("Nam")) {
             bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
         } else {
             bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
@@ -61,17 +60,36 @@ public class ResultActivity extends AppCompatActivity {
         txtBMI.setText(String.format("%.1f", bmi));
         txtCategory.setText(category);
         txtBMR.setText(String.format("%.0f kcal/ngày", bmr));
-        txtGoal.setText("Mục tiêu: " + goal);
+        txtGoal.setText("Mục tiêu: " + (goal != null ? goal : "Duy trì cân nặng"));
 
         btnStart.setOnClickListener(v -> {
+            // --- LƯU THÔNG TIN VÀO APPDATAMANAGER ---
+            AppDataManager manager = AppDataManager.getInstance();
+            if (name != null && !name.isEmpty()) {
+                manager.setProfileName(name);
+            }
+            if (gender != null) {
+                manager.setProfileGender(gender);
+            }
+            if (goal != null) {
+                manager.setProfileGoal(goal);
+            }
+            manager.setProfileHeight((float) height);
+            manager.setProfileAge(age);
+            manager.setProfileTargetWeight((float) weight);
 
-            Intent intent = new Intent(ResultActivity.this,
-                    MainActivity.class);
+            // Ghi nhận cân nặng hiện tại vào lịch sử ngày hôm nay
+            String todayKey = AppDataManager.getCurrentTodayKey();
+            manager.setSelectedDateKey(todayKey);
+            manager.setWeightForSelectedDate((float) weight);
+            // ----------------------------------------
 
+            // Chuyển thẳng đến trang Hồ sơ chính (ProfileActivity2) để hiển thị thông tin vừa lưu
+            Intent intent = new Intent(ResultActivity.this, ProfileActivity2.class);
+            // Xóa sạch lịch sử các Activity nhập liệu trước đó để người dùng không bấm Back quay lại được
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
-
         });
-
     }
 }

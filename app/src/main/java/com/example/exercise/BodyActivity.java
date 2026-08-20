@@ -14,17 +14,18 @@ public class BodyActivity extends AppCompatActivity {
     EditText edtHeight, edtWeight;
     Button btnBack, btnNext;
 
-    String name, gender, goal;
+    String name, gender;
+    int age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body);
 
+        // Nhận thông tin từ ProfileActivity truyền sang
         name = getIntent().getStringExtra("name");
         gender = getIntent().getStringExtra("gender");
-        goal = getIntent().getStringExtra("goal");
-        int age = getIntent().getIntExtra("age", 0);
+        age = getIntent().getIntExtra("age", 0);
 
         edtHeight = findViewById(R.id.edtHeight);
         edtWeight = findViewById(R.id.edtWeight);
@@ -53,14 +54,15 @@ public class BodyActivity extends AppCompatActivity {
                 double height = Double.parseDouble(heightStr);
                 double weight = Double.parseDouble(weightStr);
 
-                Intent intent = new Intent(BodyActivity.this, ResultActivity.class);
+                // ĐÍCH ĐẾN PHẢI LÀ GoalActivity ĐỂ CHỌN MỤC TIÊU CÂN NẶNG
+                Intent intent = new Intent(BodyActivity.this, GoalActivity.class);
 
+                // Mang theo toàn bộ dữ liệu cũ cộng thêm chiều cao và cân nặng vừa nhập
                 intent.putExtra("name", name);
                 intent.putExtra("gender", gender);
-                intent.putExtra("goal", goal);
+                intent.putExtra("age", age);
                 intent.putExtra("height", height);
                 intent.putExtra("weight", weight);
-                intent.putExtra("age", age);
 
                 startActivity(intent);
 
@@ -69,6 +71,5 @@ public class BodyActivity extends AppCompatActivity {
                 edtWeight.setError("Chỉ nhập số");
             }
         });
-
     }
 }

@@ -56,7 +56,7 @@ public class JournalActivity extends AppCompatActivity {
             });
         }
 
-        // ĐÃ KẾT NỐI: Bấm nút Xem chi tiết Nước -> Sang WaterJournalActivity
+        // Bấm nút Xem chi tiết Nước -> Sang WaterJournalActivity
         View btnWaterDetail = findViewById(R.id.btnWaterDetail);
         if (btnWaterDetail != null) {
             btnWaterDetail.setOnClickListener(v -> {
@@ -74,6 +74,7 @@ public class JournalActivity extends AppCompatActivity {
         }
 
         // 2. BOTTOM NAVIGATION BAR
+        // Tab Trang chủ
         View menuHome = findViewById(R.id.menuHome);
         if (menuHome != null) {
             menuHome.setOnClickListener(v -> {
@@ -84,10 +85,33 @@ public class JournalActivity extends AppCompatActivity {
             });
         }
 
+        // Tab Nhật ký (Đang ở trang này nên giữ nguyên)
         View menuJournal = findViewById(R.id.menuJournal);
         if (menuJournal != null) {
             menuJournal.setOnClickListener(v -> {
                 // Đang ở trang Nhật ký rồi nên không cần chuyển nữa
+            });
+        }
+
+        // Tab Thống kê -> Chuyển sang AnalyticsActivity
+        View menuAnalytics = findViewById(R.id.menuAnalytics);
+        if (menuAnalytics != null) {
+            menuAnalytics.setOnClickListener(v -> {
+                Intent intent = new Intent(JournalActivity.this, AnalyticsActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
+            });
+        }
+
+        // Tab Hồ sơ -> ĐÃ CẬP NHẬT TRỎ VỀ ProfileActivity2 (Trang hồ sơ chính)
+        View menuProfile = findViewById(R.id.menuProfile);
+        if (menuProfile != null) {
+            menuProfile.setOnClickListener(v -> {
+                Intent intent = new Intent(JournalActivity.this, ProfileActivity2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
             });
         }
     }

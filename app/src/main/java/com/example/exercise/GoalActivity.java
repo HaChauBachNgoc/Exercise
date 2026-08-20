@@ -18,15 +18,20 @@ public class GoalActivity extends AppCompatActivity {
     Button btnBack, btnNext;
 
     String name, gender;
+    int age;
+    double height, weight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal);
 
+        // 1. Nhận đầy đủ dữ liệu truyền từ BodyActivity sang
         name = getIntent().getStringExtra("name");
         gender = getIntent().getStringExtra("gender");
-        int age = getIntent().getIntExtra("age", 0);
+        age = getIntent().getIntExtra("age", 0);
+        height = getIntent().getDoubleExtra("height", 0);
+        weight = getIntent().getDoubleExtra("weight", 0);
 
         rgGoal = findViewById(R.id.rgGoal);
         rbLose = findViewById(R.id.rbLose);
@@ -38,8 +43,8 @@ public class GoalActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
 
+        // 2. Xử lý khi bấm Tiếp để chuyển sang ResultActivity
         btnNext.setOnClickListener(v -> {
-
             String goal = "";
 
             if (rbLose.isChecked()) {
@@ -48,19 +53,23 @@ public class GoalActivity extends AppCompatActivity {
                 goal = "Tăng cân";
             } else if (rbMaintain.isChecked()) {
                 goal = "Duy trì cân nặng";
+            } else {
+                Toast.makeText(this, "Vui lòng chọn mục tiêu của bạn!", Toast.LENGTH_SHORT).show();
+                return;
             }
 
+            // ĐÍCH ĐẾN PHẢI LÀ ResultActivity ĐỂ TÍNH TOÁN VÀ HIỂN THỊ KẾT QUẢ
+            Intent intent = new Intent(GoalActivity.this, ResultActivity.class);
 
-
-            Intent intent = new Intent(GoalActivity.this, BodyActivity.class);
-
+            // Đóng gói toàn bộ dữ liệu mang theo đến màn hình kết quả
             intent.putExtra("name", name);
             intent.putExtra("gender", gender);
-            intent.putExtra("goal", goal);
             intent.putExtra("age", age);
+            intent.putExtra("height", height);
+            intent.putExtra("weight", weight);
+            intent.putExtra("goal", goal);
 
             startActivity(intent);
         });
-
     }
 }

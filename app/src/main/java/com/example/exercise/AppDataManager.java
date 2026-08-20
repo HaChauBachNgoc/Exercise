@@ -64,6 +64,37 @@ public class AppDataManager {
         }
     }
 
+    // --- QUẢN LÝ THÔNG TIN PROFILE NGƯỜI DÙNG ---
+    private String profileName = "Nguyễn Tuyết Nhi";
+    private String profileEmail = "email@gmail.com";
+    private String profileGender = "Nữ";
+    private int profileAge = 20;
+    private float profileHeight = 160f; // cm
+    private float profileTargetWeight = 45f; // kg
+    private String profileGoal = "Giảm cân";
+
+    public String getProfileName() { return profileName; }
+    public void setProfileName(String name) { this.profileName = name; }
+
+    public String getProfileEmail() { return profileEmail; }
+    public void setProfileEmail(String email) { this.profileEmail = email; }
+
+    public String getProfileGender() { return profileGender; }
+    public void setProfileGender(String gender) { this.profileGender = gender; }
+
+    public int getProfileAge() { return profileAge; }
+    public void setProfileAge(int age) { this.profileAge = age; }
+
+    public float getProfileHeight() { return profileHeight; }
+    public void setProfileHeight(float height) { this.profileHeight = height; }
+
+    public float getProfileTargetWeight() { return profileTargetWeight; }
+    public void setProfileTargetWeight(float targetWeight) { this.profileTargetWeight = targetWeight; }
+
+    public String getProfileGoal() { return profileGoal; }
+    public void setProfileGoal(String goal) { this.profileGoal = goal; }
+    // ------------------------------------------
+
     private final List<FoodItem> sampleFoods = new ArrayList<>();
     private final List<WorkoutItem> sampleWorkouts = new ArrayList<>();
 
@@ -203,7 +234,6 @@ public class AppDataManager {
         return 0f;
     }
 
-    // Lấy cân nặng hiệu lực cho ngày đang chọn (nếu ngày đó chưa nhập, lấy cân nặng gần nhất trước đó)
     public float getEffectiveWeightForDate(String dateKey) {
         if (dailyWeightMap.containsKey(dateKey)) {
             return dailyWeightMap.get(dateKey);
@@ -229,7 +259,6 @@ public class AppDataManager {
         return lastW;
     }
 
-    // Lấy ngày cập nhật cân nặng gần nhất tính đến ngày đang chọn
     public String getEffectiveWeightDateKey(String dateKey) {
         if (dailyWeightMap.containsKey(dateKey)) {
             return dateKey;
@@ -291,5 +320,19 @@ public class AppDataManager {
 
     public void removeWeightEntry(String dateKey) {
         dailyWeightMap.remove(dateKey);
+    }
+
+    // --- TỰ ĐỘNG TÍNH MỨC HOẠT ĐỘNG DỰA TRÊN CALO ---
+    public String getCalculatedActivityLevel() {
+        int totalBurned = getTotalBurnedCalo();
+        int totalIntake = getTotalCalo();
+
+        if (totalBurned > 400 || totalIntake > 2200) {
+            return "Năng động  ›";
+        } else if (totalBurned > 150 || totalIntake > 1500) {
+            return "Vừa phải  ›";
+        } else {
+            return "Ít vận động  ›";
+        }
     }
 }

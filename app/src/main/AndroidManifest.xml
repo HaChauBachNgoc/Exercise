@@ -19,6 +19,7 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -58,46 +59,53 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.exercise.AddWorkoutActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <!-- 5. Màn hình Nhật Ký Tổng Quan & Chi Tiết -->
         <activity
             android:name="com.example.exercise.JournalActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.exercise.FoodJournalActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.exercise.WorkoutJournalActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <!-- 6. Lịch sử Cân Nặng & Nước Uống -->
         <activity
             android:name="com.example.exercise.WeightJournalActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.exercise.WaterJournalActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
         <!-- 7. Màn hình Thống kê chính -->
         <activity
             android:name="com.example.exercise.AnalyticsActivity"
-            android:exported="false"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
+        <activity
+            android:name="com.example.exercise.UpdateProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.exercise.ProfileActivity2"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
     private Calendar currentWeekStart = Calendar.getInstance();
     private Calendar selectedCalendar = Calendar.getInstance();
 
-    // Lưu lại tuần đang xem để khi chuyển tab qua lại không bị reset về tuần hiện tại
     private static Calendar savedWeekStart = null;
 
     private int currentWater = 0;
@@ -132,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
             btnCalendar.setOnClickListener(v -> showDatePicker());
         }
 
-        // Sự kiện bấm vào tab Trang chủ dưới cùng để reset về ngày hôm nay
         View menuHome = findViewById(R.id.menuHome);
         if (menuHome != null) {
             menuHome.setOnClickListener(v -> {
@@ -143,11 +141,19 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        // Sự kiện bấm vào tab Thống kê dưới cùng để chuyển sang AnalyticsActivity
         View menuAnalytics = findViewById(R.id.menuAnalytics);
         if (menuAnalytics != null) {
             menuAnalytics.setOnClickListener(v -> {
                 Intent intent = new Intent(MainActivity.this, AnalyticsActivity.class);
+                startActivity(intent);
+            });
+        }
+
+        View menuProfile = findViewById(R.id.menuProfile);
+        if (menuProfile != null) {
+            menuProfile.setOnClickListener(v -> {
+                Intent intent = new Intent(MainActivity.this, ProfileActivity2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
             });
         }
@@ -285,8 +291,6 @@ public class MainActivity extends AppCompatActivity {
             int sizePx = (int) (36 * getResources().getDisplayMetrics().density);
             LinearLayout.LayoutParams circleParams = new LinearLayout.LayoutParams(sizePx, sizePx);
             circleContainer.setLayoutParams(circleParams);
-
-
 
             TextView tvDayName = new TextView(this);
             tvDayName.setText(dayNames[i]);
@@ -666,6 +670,29 @@ public class MainActivity extends AppCompatActivity {
                 },
                 year, month, day
         );
+
+        // Tùy chỉnh màu sắc lịch chuẩn tông tím tối giống WaterJournalActivity
+        datePickerDialog.setOnShowListener(dialog -> {
+            if (datePickerDialog.getWindow() != null) {
+                datePickerDialog.getWindow().setBackgroundDrawable(
+                        new android.graphics.drawable.ColorDrawable(Color.parseColor("#1D1A38"))
+                );
+            }
+
+            if (datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE) != null) {
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE)
+                        .setTextColor(Color.parseColor("#00BFFF"));
+            }
+            if (datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE) != null) {
+                datePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE)
+                        .setTextColor(Color.parseColor("#8E8B9E"));
+            }
+
+            DatePicker datePicker = datePickerDialog.getDatePicker();
+            if (datePicker != null) {
+                datePicker.setBackgroundColor(Color.parseColor("#1D1A38"));
+            }
+        });
 
         datePickerDialog.show();
     }
